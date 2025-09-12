@@ -28,7 +28,7 @@ export default defineConfig(() => {
       lib: {
         // Could also be a dictionary or array of multiple entry points.
         entry: 'src/index.ts',
-        name: '@siul/ds',
+        name: '@luispmoraisc/ds',
         fileName: 'index',
         formats: ['es' as const],
       },
@@ -43,7 +43,7 @@ export default defineConfig(() => {
       },
     },
     test: {
-      name: '@siul/ds',
+      name: '@luispmoraisc/ds',
       watch: false,
       globals: true,
       environment: 'jsdom',

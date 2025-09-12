@@ -12,7 +12,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "68c372e200ebb55905d6dee5",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
@@ -68,7 +67,10 @@
   "release": {
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "currentVersionResolverMetadata": {
+        "registry": "https://npm.pkg.github.com/"
+      }
     },
     "changelog": {
       "message": "chore(release): publish new version",

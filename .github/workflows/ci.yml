@@ -8,7 +8,8 @@ on:
 
 permissions:
   actions: read
-  contents: read
+  contents: write
+  packages: write
 
 jobs:
   main:
@@ -20,28 +21,26 @@ jobs:
         with:
           filter: tree:0
           fetch-depth: 0
+          persist-credentials: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Cache node_modules
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@luispmoraisc'
+          always-auth: true
 
-      # Configure .npmrc for GitHub Packages
       - name: Configure .npmrc
         run: |
-          echo "registry=https://npm.pkg.github.com/" > ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> ~/.npmrc
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install dependencies
+          echo "@luispmoraisc:registry=https://npm.pkg.github.com/" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn install --immutable
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Run lint, test, build and typecheck
         run: npx nx run-many -t lint test build typecheck
@@ -53,5 +52,7 @@ jobs:
 
       - name: Release packages
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx nx release --first-release
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx nx release --yes
