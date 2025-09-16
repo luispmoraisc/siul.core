@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SiulDsMui from './ds-mui';
+import Card from './Card';
 
-describe('SiulDsMui', () => {
+describe('Card', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SiulDsMui />);
+    const { baseElement } = render(<Card />);
     expect(baseElement).toBeTruthy();
   });
 });
