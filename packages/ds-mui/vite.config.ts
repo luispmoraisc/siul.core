@@ -6,9 +6,10 @@ import * as path from 'path';
 
 export default defineConfig(() => {
   const pkg = require('./package.json');
+
   return {
     root: __dirname,
-    cacheDir: '../../node_modules/.vite/packages/ds',
+    cacheDir: '../../node_modules/.vite/packages/ds-mui',
     plugins: [
       react(),
       dts({
@@ -16,8 +17,6 @@ export default defineConfig(() => {
         tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
       }),
     ],
-    // Configuration for building your library.
-    // See: https://vitejs.dev/guide/build.html#library-mode
     build: {
       outDir: './dist',
       emptyOutDir: true,
@@ -28,7 +27,7 @@ export default defineConfig(() => {
       lib: {
         // Could also be a dictionary or array of multiple entry points.
         entry: 'src/index.ts',
-        name: '@luispmoraisc/ds',
+        name: '@luispmoraisc/ds-mui',
         fileName: 'index',
         formats: ['es' as const],
       },
@@ -43,7 +42,7 @@ export default defineConfig(() => {
       },
     },
     test: {
-      name: '@luispmoraisc/ds',
+      name: '@luispmoraisc/ds-mui',
       watch: false,
       globals: true,
       environment: 'jsdom',

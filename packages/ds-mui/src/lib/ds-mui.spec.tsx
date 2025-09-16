@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SiulCoreDs from './ds';
+import SiulDsMui from './ds-mui';
 
-describe('SiulCoreDs', () => {
+describe('SiulDsMui', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SiulCoreDs />);
+    const { baseElement } = render(<SiulDsMui />);
     expect(baseElement).toBeTruthy();
   });
 });
