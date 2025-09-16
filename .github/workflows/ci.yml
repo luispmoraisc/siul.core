@@ -50,8 +50,8 @@ jobs:
 
       - name: Configure GitHub
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Release (development)
         if: github.ref_name == 'development' && github.event_name == 'pull_request'
@@ -70,4 +70,4 @@ jobs:
         run: npx nx release --yes
 
       - name: Push commit changes and tags
-        run: git push --follow-tags HEAD:${{ github.head_ref }}
+        run: git push origin --follow-tags HEAD:${{ github.head_ref || github.ref_name }}
