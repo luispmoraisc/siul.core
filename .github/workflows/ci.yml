@@ -59,7 +59,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx nx release --yes --preid=next
+        run: npx nx release --yes --preid=next # just publish package
 
       - name: Release (default)
         if: ${{ github.ref_name == 'main' && github.event_name == 'push' }}
@@ -70,4 +70,5 @@ jobs:
         run: npx nx release --yes
 
       - name: Push commit changes and tags
+        if: ${{ github.ref_name == 'main' && github.event_name == 'push' }}
         run: git push origin --follow-tags HEAD:${{ github.head_ref || github.ref_name }}
