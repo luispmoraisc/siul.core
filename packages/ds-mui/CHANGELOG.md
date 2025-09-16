@@ -1,3 +1,9 @@
+## 0.2.0-next.1 (2025-09-16)
+
+### 🚀 Features
+
+- **ds-mui:** add paper component ([9a6ceb0](https://github.com/luispmoraisc/siul.core/commit/9a6ceb0))
+
 ## 0.2.0-next.0 (2025-09-16)
 
 ### 🚀 Features
