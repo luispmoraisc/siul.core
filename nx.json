@@ -65,19 +65,27 @@
     }
   },
   "release": {
+    "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
       "conventionalCommits": true,
       "currentVersionResolverMetadata": {
         "registry": "https://npm.pkg.github.com/"
-      }
+      },
+      "fallbackCurrentVersionResolver": "disk"
     },
     "changelog": {
       "message": "chore(release): publish new version",
-      "workspaceChangelog": {
+      "automaticFromRef": true,
+      "projectChangelogs": {
+        "renderOptions": {
+          "authors": false,
+          "applyUsernameToAuthors": false
+        },
         "createRelease": "github"
       }
-    }
+    },
+    "releaseTagPattern": "{projectName}-v{version}"
   },
   "generators": {
     "@nx/react": {
