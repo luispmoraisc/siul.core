@@ -4,9 +4,6 @@
   "files": [],
   "references": [
     {
-      "path": "./packages/ds"
-    },
-    {
       "path": "./packages/ds-mui"
     }
   ]
