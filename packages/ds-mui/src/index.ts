@@ -1,2 +1,1 @@
-export * from './lib/Progress/Progress';
-export * from './lib/ds-mui';
+export * from './components/Progress/Progress';
