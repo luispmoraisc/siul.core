@@ -54,7 +54,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Release (development)
-        if: ${{ github.ref_name == 'development' && github.event_name == 'pull_request' }}
+        if: ${{ github.base_ref == 'development' && github.event_name == 'pull_request' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
