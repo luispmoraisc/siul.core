@@ -1,9 +1,9 @@
 import CircularProgress from '@mui/material/CircularProgress';
 
-export function Progress() {
+export function Progress({ value }: { value: number }) {
   return (
     <div>
-      <CircularProgress />
+      <CircularProgress variant="determinate" value={value} />
     </div>
   );
 }
