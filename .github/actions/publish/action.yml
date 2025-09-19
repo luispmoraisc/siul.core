@@ -28,7 +28,7 @@ runs:
         GITHUB_TOKEN: ${{ inputs.TOKEN }}
       shell: bash
       run: |
-        npx nx release version --preid=${{ inputs.PRE_RELEASE_IDENTIFIER }} --git-tag=false --git-commit=true --git-push=false --git-commit-message="chore(release): create ${{ inputs.PRE_RELEASE_IDENTIFIER }} release"
+        npx nx release version --preid=${{ inputs.PRE_RELEASE_IDENTIFIER }} --git-tag=false --git-commit=true --git-push=true --git-commit-message="chore(release): create ${{ inputs.PRE_RELEASE_IDENTIFIER }} release"
         npx nx release publish --nxBail=true --registry=${{ inputs.REGISTRY_URL }} --tag ${{ inputs.PRE_RELEASE_IDENTIFIER }}
         git status
         git log --oneline
@@ -47,4 +47,5 @@ runs:
     - name: Git push changes
       shell: bash
       run: |
-        git push HEAD:${{ github.head_ref }}
+        git checkout ${{ github.head_ref }}
+        git push
