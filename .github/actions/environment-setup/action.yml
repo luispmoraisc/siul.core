@@ -1,0 +1,62 @@
+name: Setup Project Environment
+description: Action to set up the project environment with Node.js and Yarn, including caching for dependencies.
+
+inputs:
+  NODE_VERSION:
+    description: 'Version of Node.js'
+    required: true
+    default: '20'
+  REGISTRY_URL:
+    description: 'Registry URL'
+    required: false
+    default: 'https://registry.npmjs.org/'
+  SCOPE:
+    description: 'NPM scope for the packages (if any)'
+    required: false
+    default: 'yarn'
+  CACHE:
+    description: 'Type of package manager cache to use (e.g., yarn, npm)'
+    required: false
+    default: 'yarn'
+  TOKEN:
+    description: 'GitHub token for authentication'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Git config user
+      shell: bash
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.NODE_VERSION }}
+        registry-url: ${{ inputs.REGISTRY_URL }}
+        scope: ${{ inputs.SCOPE }}
+        cache: ${{ inputs.CACHE }}
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.TOKEN }}
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir
+      shell: bash
+      run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+    - name: Restore yarn cache
+      uses: actions/cache@v4
+      id: yarn-cache
+      with:
+        path: ${{ steps.yarn-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.TOKEN }}
