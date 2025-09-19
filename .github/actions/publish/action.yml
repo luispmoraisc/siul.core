@@ -47,6 +47,4 @@ runs:
     - name: Git push changes
       shell: bash
       run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git push HEAD:${{ github.head_ref }}
