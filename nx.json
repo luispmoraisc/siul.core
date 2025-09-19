@@ -67,6 +67,7 @@
   "release": {
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}-v{version}",
+    "releaseTagPatternStrictPreid": true,
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
       "conventionalCommits": true,

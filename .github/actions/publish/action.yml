@@ -4,8 +4,8 @@ description: Action to publish packages to a specified NPM registry.
 inputs:
   PRE_RELEASE_IDENTIFIER:
     description: 'Pre-release identifier for the version'
-    required: true
-    default: 'next'
+    required: false
+    default: 'beta'
   REGISTRY_URL:
     description: 'Registry URL'
     required: false
