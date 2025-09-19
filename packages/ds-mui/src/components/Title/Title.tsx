@@ -1,7 +1,9 @@
+import Typography from '@mui/material/Typography';
+
 export function Title() {
   return (
     <div>
-      <h1>Welcome to Title!</h1>
+      <Typography variant="h1">Welcome to Title!</Typography>
     </div>
   );
 }
