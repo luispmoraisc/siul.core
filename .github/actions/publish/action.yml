@@ -62,6 +62,7 @@ runs:
 
     - name: Push commit de versão para a branch do PR
       if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+      shell: bash
       run: git push origin --follow-tags HEAD:${{ github.head_ref }}
 
     # - name: Git push changes
