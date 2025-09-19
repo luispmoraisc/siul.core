@@ -28,8 +28,10 @@ runs:
         GITHUB_TOKEN: ${{ inputs.TOKEN }}
       shell: bash
       run: |
-        npx nx release version --preid=${{ inputs.PRE_RELEASE_IDENTIFIER }} --git-tag=false --git-commit="chore(release): create ${{ inputs.PRE_RELEASE_IDENTIFIER}}" --git-push=true --git-commit-message="chore(release): create ${{ inputs.PRE_RELEASE_IDENTIFIER }} release" --git-push-args=HEAD:${{ github.head_ref }}
+        npx nx release version --preid=${{ inputs.PRE_RELEASE_IDENTIFIER }} --git-tag=false --git-commit=true --git-push=false --git-commit-message="chore(release): create ${{ inputs.PRE_RELEASE_IDENTIFIER }} release"
         npx nx release publish --nxBail=true --registry=${{ inputs.REGISTRY_URL }} --tag ${{ inputs.PRE_RELEASE_IDENTIFIER }}
+        git status
+        git log --oneline
 
     - name: Publish latest version
       if: ${{ inputs.IS_PRE_RELEASE == 'false' }}
@@ -42,9 +44,9 @@ runs:
         # npx nx release publish --nxBail=true --registry=${{ inputs.REGISTRY_URL }} --tag=latest
         npx nx release --yes
 
-    # - name: Git push changes
-    #   shell: bash
-    #   run: |
-    #     git config --global user.name "github-actions[bot]"
-    #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
-    #     git push origin --follow-tags HEAD:${{ github.head_ref }}
+    - name: Git push changes
+      shell: bash
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git push HEAD:${{ github.head_ref }}
