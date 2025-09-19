@@ -48,7 +48,6 @@ runs:
       shell: bash
       run: |
         npx nx release publish \
-          --nxBail=true \
           --registry=${{ inputs.REGISTRY_URL }} \
           --tag ${{ inputs.PRE_RELEASE_IDENTIFIER }} \
           --verbose=true
