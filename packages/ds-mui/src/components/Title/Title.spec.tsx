@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Progress from './Progress';
+import Title from './Title';
 
-describe('Progress', () => {
+describe('Title', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Progress value={4} />);
+    const { baseElement } = render(<Title />);
     expect(baseElement).toBeTruthy();
   });
 });
