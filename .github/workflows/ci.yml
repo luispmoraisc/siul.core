@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -13,62 +13,99 @@ permissions:
   contents: write
   packages: write
 
+env:
+  NODE_VERSION: '20'
+  REGISTRY_URL: 'https://npm.pkg.github.com'
+  SCOPE: '@luispmoraisc'
+
 jobs:
-  main:
+  # Job para validação de código
+  validate:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref || github.ref_name }}
           fetch-depth: 0
-          persist-credentials: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Environment
+        uses: ./.github/actions/environment-setup
         with:
-          node-version: 20
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@luispmoraisc'
-          always-auth: true
-          cache: 'yarn'
+          NODE_VERSION: ${{ env.NODE_VERSION }}
+          REGISTRY_URL: ${{ env.REGISTRY_URL }}
+          SCOPE: ${{ env.SCOPE }}
+          CACHE: 'yarn'
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure .npmrc
+      - name: Run validation tasks
         run: |
-          echo "@luispmoraisc:registry=https://npm.pkg.github.com/" > ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          npx nx run-many -t lint --skip-nx-cache
+          npx nx run-many -t test --skip-nx-cache
+          npx nx run-many -t typecheck --skip-nx-cache
 
-      - name: Install dependencies
-        run: yarn install
+      - name: Build projects
+        run: npx nx run-many -t build --skip-nx-cache
 
-      - name: Run lint, test, build and typecheck
-        run: npx nx run-many -t lint test build typecheck
+  # Job para release em desenvolvimento (beta)
+  release-dev:
+    runs-on: ubuntu-latest
+    needs: validate
+    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'development' }}
+    environment: development
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure GitHub
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Set up Environment
+        uses: ./.github/actions/environment-setup
+        with:
+          NODE_VERSION: ${{ env.NODE_VERSION }}
+          REGISTRY_URL: ${{ env.REGISTRY_URL }}
+          SCOPE: ${{ env.SCOPE }}
+          CACHE: 'yarn'
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Release (development)
-        if: ${{ github.base_ref == 'development' && github.event_name == 'pull_request' }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx nx release --yes --preid=next # just publish package
+      - name: Publish beta version
+        uses: ./.github/actions/publish
+        with:
+          PRE_RELEASE_IDENTIFIER: 'beta'
+          REGISTRY_URL: ${{ env.REGISTRY_URL }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IS_PRE_RELEASE: 'true'
 
-      - name: Release (default)
-        if: ${{ github.ref_name == 'main' && github.event_name == 'push' }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx nx release --yes
+  # Job para release em produção
+  release-prod:
+    runs-on: ubuntu-latest
+    needs: validate
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    environment: production
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push commit changes and tags
-        if: ${{ github.ref_name == 'main' && github.event_name == 'push' }}
-        run: git push origin --follow-tags HEAD:${{ github.head_ref || github.ref_name }}
+      - name: Set up Environment
+        uses: ./.github/actions/environment-setup
+        with:
+          NODE_VERSION: ${{ env.NODE_VERSION }}
+          REGISTRY_URL: ${{ env.REGISTRY_URL }}
+          SCOPE: ${{ env.SCOPE }}
+          CACHE: 'yarn'
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish latest version
+        uses: ./.github/actions/publish
+        with:
+          REGISTRY_URL: ${{ env.REGISTRY_URL }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IS_PRE_RELEASE: 'false'
+
+      - name: Push tags and changes
+        run: git push --follow-tags

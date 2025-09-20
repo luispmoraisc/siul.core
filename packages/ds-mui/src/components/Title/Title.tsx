@@ -1,7 +1,12 @@
+import { Divider, Typography } from '@mui/material';
+
 export function Title() {
   return (
     <div>
-      <h1>Welcome to Title!</h1>
+      <Typography variant="h1" color="info">
+        Welcome to Title!
+      </Typography>
+      <Divider />
     </div>
   );
 }
