@@ -12,7 +12,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "68c372e200ebb55905d6dee5",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
@@ -66,14 +65,25 @@
     }
   },
   "release": {
+    "projectsRelationship": "independent",
+    "releaseTagPattern": "{projectName}-v{version}",
+    "releaseTagPatternStrictPreid": true,
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "fallbackCurrentVersionResolver": "disk",
+      "currentVersionResolverMetadata": {
+        "registry": "https://npm.pkg.github.com/"
+      }
     },
     "changelog": {
       "message": "chore(release): publish new version",
-      "workspaceChangelog": {
-        "createRelease": "github"
+      "automaticFromRef": true,
+      "projectChangelogs": {
+        "renderOptions": {
+          "authors": false,
+          "applyUsernameToAuthors": false
+        }
       }
     }
   },

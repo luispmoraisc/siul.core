@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SiulCoreDs from './ds';
+import Title from './Title';
 
-describe('SiulCoreDs', () => {
+describe('Title', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SiulCoreDs />);
+    const { baseElement } = render(<Title />);
     expect(baseElement).toBeTruthy();
   });
 });
