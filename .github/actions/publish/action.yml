@@ -55,7 +55,7 @@ runs:
       run: |
         # npx nx release version --git-tag=true --git-commit=true --git-commit-message="chore(release): create a new latest version" --git-push=true
         # npx nx release publish --nxBail=true --registry=${{ inputs.REGISTRY_URL }} --tag=latest
-        npx nx release --yes
+        npx nx release --yes --preid=latest
 
     - name: Push changes to PR branch
       if: ${{ github.event.pull_request.head.repo.full_name == github.repository && inputs.IS_PRE_RELEASE == 'true' }}
