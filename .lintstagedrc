@@ -1,0 +1,16 @@
+{
+  "packages/**/*.{ts,tsx}": [
+    "npx nx run-many -t lint",
+    "prettier --write",
+    "npx nx run-many -t test"
+  ],
+  "*.json": [
+    "prettier --write"
+  ],
+  "*.md": [
+    "prettier --write"
+  ],
+  "*.yml": [
+    "prettier --write"
+  ]
+}
