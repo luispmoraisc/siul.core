@@ -1,3 +1,13 @@
+## 0.2.0-latest.0 (2025-09-20)
+
+### 🚀 Features
+
+- **ds-mui:** force a change to test latest tag ([ebe9f03](https://github.com/luispmoraisc/siul.core/commit/ebe9f03))
+- **mui-ds:** create title component ([1843a6b](https://github.com/luispmoraisc/siul.core/commit/1843a6b))
+- **ds-mui:** add paper component ([9a6ceb0](https://github.com/luispmoraisc/siul.core/commit/9a6ceb0))
+- **ds-mui:** create Card component ([cedf1d7](https://github.com/luispmoraisc/siul.core/commit/cedf1d7))
+- **ds-mui:** create ds-mui package ([7e4cdb2](https://github.com/luispmoraisc/siul.core/commit/7e4cdb2))
+
 ## 0.2.0-beta.7 (2025-09-20)
 
 ### 🚀 Features
