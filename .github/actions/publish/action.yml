@@ -2,10 +2,6 @@ name: Publish
 description: Action to publish packages to a specified NPM registry.
 
 inputs:
-  PRE_RELEASE_IDENTIFIER:
-    description: 'Pre-release identifier for the version'
-    required: false
-    default: 'beta'
   REGISTRY_URL:
     description: 'Registry URL'
     required: false
@@ -21,7 +17,13 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Publish pre-release version
+    - name: Define a hash to development tag
+      if: ${{ github.event_name == 'pull_request' && github.base_ref == 'development' }}
+      id: set_hash
+      shell: bash
+      run: echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+    - name: Create a new version for pre-release (Development)
       if: ${{ inputs.IS_PRE_RELEASE == 'true' }}
       env:
         NODE_AUTH_TOKEN: ${{ inputs.TOKEN }}
@@ -29,13 +31,12 @@ runs:
       shell: bash
       run: |
         npx nx release version \
-          --preid=${{ inputs.PRE_RELEASE_IDENTIFIER }} \
+          --preid=${{ env.COMMIT_HASH }} \
           --git-tag=false \
-          --git-commit=true \
-          --git-push=false \
-          --git-commit-message="chore(release): create ${{ inputs.PRE_RELEASE_IDENTIFIER }} release"
+          --git-commit=false \
+          --git-push=false
 
-    - name: Publish pre-release packages
+    - name: Publish pre-release packages (Development)
       if: ${{ inputs.IS_PRE_RELEASE == 'true' }}
       env:
         NODE_AUTH_TOKEN: ${{ inputs.TOKEN }}
@@ -46,18 +47,16 @@ runs:
           --registry="${{ inputs.REGISTRY_URL }}" \
           --verbose=true
 
-    - name: Publish latest version
+    - name: Publish latest version (Production)
       if: ${{ inputs.IS_PRE_RELEASE == 'false' }}
       env:
         NODE_AUTH_TOKEN: ${{ inputs.TOKEN }}
         GITHUB_TOKEN: ${{ inputs.TOKEN }}
       shell: bash
       run: |
-        # npx nx release version --git-tag=true --git-commit=true --git-commit-message="chore(release): create a new latest version" --git-push=true
-        # npx nx release publish --nxBail=true --registry=${{ inputs.REGISTRY_URL }} --tag=latest
-        npx nx release --yes --preid=latest
+        npx nx release --yes
 
-    - name: Push changes to PR branch
-      if: ${{ github.event.pull_request.head.repo.full_name == github.repository && inputs.IS_PRE_RELEASE == 'true' }}
-      shell: bash
-      run: git push origin --follow-tags HEAD:${{ github.head_ref }}
+    # - name: Push changes to PR branch
+    #   if: ${{ github.event.pull_request.head.repo.full_name == github.repository && inputs.IS_PRE_RELEASE == 'true' }}
+    #   shell: bash
+    #   run: git push origin --follow-tags HEAD:${{ github.head_ref }}
