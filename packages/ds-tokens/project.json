@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pre-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx style-dictionary build --config packages/ds-tokens/config.json"
+      },
+      "parallel": false
+    },
+    "build": {
+      "dependsOn": ["pre-build"]
+    }
+  }
+}

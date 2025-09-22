@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "src/generated",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "vite/client"]
+  },
+  "include": ["src/generated/**/*.ts"],
+  "references": [],
+  "exclude": ["vite.config.ts"]
+}

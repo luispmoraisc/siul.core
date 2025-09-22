@@ -1,0 +1,19 @@
+{
+  "spacing": {
+    "XS": {
+      "value": "0.25rem"
+    },
+    "SM": {
+      "value": "0.5rem"
+    },
+    "MD": {
+      "value": "1rem"
+    },
+    "LG": {
+      "value": "1.25rem"
+    },
+    "XL": {
+      "value": "2rem"
+    }
+  }
+}

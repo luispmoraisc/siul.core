@@ -1,0 +1,61 @@
+{
+  "source": ["packages/ds-tokens/src/tokens/categories/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "prefix": "ds",
+      "buildPath": "packages/ds-tokens/dist/css/",
+      "files": [
+        {
+          "destination": "tokens.css",
+          "format": "css/variables"
+        }
+      ]
+    },
+    "scss": {
+      "transformGroup": "scss",
+      "transforms": ["attribute/cti", "name/kebab"],
+      "buildPath": "packages/ds-tokens/dist/scss/",
+      "files": [
+        {
+          "destination": "tokens.scss",
+          "format": "scss/variables"
+        }
+      ]
+    },
+    "js": {
+      "transforms": ["attribute/cti", "name/constant"],
+      "transformGroup": "js",
+      "buildPath": "packages/ds-tokens/src/generated/ts/",
+      "files": [
+        {
+          "filter": {
+            "attributes": {
+              "category": "color"
+            }
+          },
+          "destination": "colors.ts",
+          "format": "javascript/es6"
+        },
+        {
+          "filter": {
+            "attributes": {
+              "category": "typography"
+            }
+          },
+          "destination": "typography.ts",
+          "format": "javascript/es6"
+        },
+        {
+          "filter": {
+            "attributes": {
+              "category": "spacing"
+            }
+          },
+          "destination": "spacing.ts",
+          "format": "javascript/es6"
+        }
+      ]
+    }
+  }
+}
