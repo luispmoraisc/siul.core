@@ -1,0 +1,98 @@
+{
+  "typography": {
+    "weight": {
+      "bold": {
+        "value": "700",
+        "category": "typography"
+      },
+      "regular": {
+        "value": "400",
+        "category": "typography"
+      }
+    },
+    "size": {
+      "title": {
+        "xl": {
+          "value": "1.5rem",
+          "category": "typography"
+        },
+        "lg": {
+          "value": "1.25rem",
+          "category": "typography"
+        },
+        "md": {
+          "value": "1.125rem",
+          "category": "typography"
+        },
+        "sm": {
+          "value": "1rem",
+          "category": "typography"
+        },
+        "xs": {
+          "value": "0.875rem",
+          "category": "typography"
+        }
+      },
+      "paragraph": {
+        "lg": {
+          "value": "1rem",
+          "category": "typography"
+        },
+        "md": {
+          "value": "0.875rem",
+          "category": "typography"
+        },
+        "sm": {
+          "value": "0.75rem",
+          "category": "typography"
+        },
+        "xs": {
+          "value": "0.625rem",
+          "category": "typography"
+        }
+      }
+    },
+    "line_height": {
+      "title": {
+        "xl": {
+          "value": "1.75rem",
+          "category": "typography"
+        },
+        "lg": {
+          "value": "1.5rem",
+          "category": "typography"
+        },
+        "md": {
+          "value": "1.375rem",
+          "category": "typography"
+        },
+        "sm": {
+          "value": "1.25rem",
+          "category": "typography"
+        },
+        "xs": {
+          "value": "1.125rem",
+          "category": "typography"
+        }
+      },
+      "paragraph": {
+        "lg": {
+          "value": "1.375rem",
+          "category": "typography"
+        },
+        "md": {
+          "value": "1.25rem",
+          "category": "typography"
+        },
+        "sm": {
+          "value": "1rem",
+          "category": "typography"
+        },
+        "xs": {
+          "value": "0.875rem",
+          "category": "typography"
+        }
+      }
+    }
+  }
+}

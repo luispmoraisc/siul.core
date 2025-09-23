@@ -1,0 +1,30 @@
+{
+  "name": "@luispmoraisc/ds-tokens",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@luispmoraisc/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "scss": "./dist/generated/scss/tokens.scss",
+      "css": "./dist/generated/css/tokens.css",
+      "colors": "./dist/colors.js",
+      "typography": "./dist/typography.js",
+      "spacing": "./dist/spacing.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "style-dictionary": "^5.0.4"
+  }
+}
