@@ -1,19 +1,24 @@
 {
   "spacing": {
-    "XS": {
-      "value": "0.25rem"
+    "xs": {
+      "value": "0.25rem",
+      "category": "spacing"
     },
-    "SM": {
-      "value": "0.5rem"
+    "sm": {
+      "value": "0.5rem",
+      "category": "spacing"
     },
-    "MD": {
-      "value": "1rem"
+    "md": {
+      "value": "1rem",
+      "category": "spacing"
     },
-    "LG": {
-      "value": "1.25rem"
+    "lg": {
+      "value": "1.25rem",
+      "category": "spacing"
     },
-    "XL": {
-      "value": "2rem"
+    "xl": {
+      "value": "2rem",
+      "category": "spacing"
     }
   }
 }

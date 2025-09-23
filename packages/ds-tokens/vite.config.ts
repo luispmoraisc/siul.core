@@ -23,11 +23,12 @@ export default defineConfig(() => {
       lib: {
         entry: 'src/index.ts',
         name: '@luispmoraisc/ds-tokens',
-        fileName: '[name]',
+        fileName: 'index.js',
         formats: ['es' as const],
       },
       rollupOptions: {
         input: {
+          index: path.resolve(__dirname, 'src/index.ts'),
           // add each category as an entry point or we should create a script to do it for us
           colors: path.resolve(__dirname, 'src/generated/ts/colors.ts'),
           spacing: path.resolve(__dirname, 'src/generated/ts/spacing.ts'),

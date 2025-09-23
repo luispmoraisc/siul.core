@@ -4,7 +4,7 @@
     "css": {
       "transformGroup": "css",
       "prefix": "ds",
-      "buildPath": "packages/ds-tokens/dist/css/",
+      "buildPath": "packages/ds-tokens/dist/generated/css/",
       "files": [
         {
           "destination": "tokens.css",
@@ -15,7 +15,7 @@
     "scss": {
       "transformGroup": "scss",
       "transforms": ["attribute/cti", "name/kebab"],
-      "buildPath": "packages/ds-tokens/dist/scss/",
+      "buildPath": "packages/ds-tokens/dist/generated/scss/",
       "files": [
         {
           "destination": "tokens.scss",

@@ -7,8 +7,15 @@
       },
       "parallel": false
     },
-    "build": {
+    "post-dictionary": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "node scripts/post-dictionary.js"
+      },
       "dependsOn": ["pre-build"]
+    },
+    "build": {
+      "dependsOn": ["post-dictionary"]
     }
   }
 }

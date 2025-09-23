@@ -11,6 +11,11 @@
       "@luispmoraisc/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
+      "scss": "./dist/generated/scss/tokens.scss",
+      "css": "./dist/generated/css/tokens.css",
+      "colors": "./dist/colors.js",
+      "typography": "./dist/typography.js",
+      "spacing": "./dist/spacing.js",
       "default": "./dist/index.js"
     }
   },
