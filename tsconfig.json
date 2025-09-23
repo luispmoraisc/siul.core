@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./packages/ds-tokens"
+    },
+    {
+      "path": "./packages/ds-mui"
     }
   ]
 }
