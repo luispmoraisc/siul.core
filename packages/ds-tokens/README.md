@@ -8,17 +8,19 @@
 
 ## Creating a New Token
 
-Inside the `src/tokens/categories` folder, create a new folder with the name of the category if it doesn't already exist, and then create an `index.json` file inside it.
+Inside the `src/tokens/categories` folder, create a new folder named after the category if it doesn't already exist. Then, create an `index.json` file inside it.
 
-> The first attribute of your JSON file will be considered the name of the category. Save this name as it will be used in the next steps.
+> The first attribute of your JSON file will be considered the category name. Save this name as it will be used in the following steps.
 
-In the `config.json` file, navigate to the `files` attribute under the `js` platform and add a new filter with the name of the newly created category, updating the `category` and `destination` attributes accordingly.
+In the `config.json` file, locate the `files` attribute under the `js` platform and add a new filter for the newly created category. Update the `category` and `destination` attributes accordingly.
 
-Open the `vite.config.ts` file and add a new input to the `rollup` configuration.
+Next, open the `vite.config.ts` file and add a new input to the `rollup` configuration.
 
-Run the command `nx build ds-tokens` to generate the new tokens.
+Finally, run the command `nx build ds-tokens` to generate the new tokens.
 
 ## TO DO
 
-- Improve the development experience.
-- Avoid requiring everyone to modify the `vite` and `style dictionary` configurations.
+- Enhance the development experience.
+- Eliminate the need for manual updates to the `vite` and `style dictionary` configurations.
+- Create base tokens and specialized tokens.
+- Implement multi-brand support.
