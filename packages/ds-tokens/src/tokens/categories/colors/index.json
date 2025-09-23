@@ -1,0 +1,44 @@
+{
+  "color": {
+    "dark": {
+      "blue": {
+        "main": {
+          "value": "#5E8EED",
+          "category": "color"
+        },
+        "bg": {
+          "value": "#2163BB",
+          "category": "color"
+        },
+        "text": {
+          "value": "#1A5099",
+          "category": "color"
+        },
+        "border": {
+          "value": "#003355",
+          "category": "color"
+        }
+      }
+    },
+    "light": {
+      "blue": {
+        "main": {
+          "value": "#5E8EED",
+          "category": "color"
+        },
+        "bg": {
+          "value": "#2163BB",
+          "category": "color"
+        },
+        "text": {
+          "value": "#1A5099",
+          "category": "color"
+        },
+        "border": {
+          "value": "#003355",
+          "category": "color"
+        }
+      }
+    }
+  }
+}
