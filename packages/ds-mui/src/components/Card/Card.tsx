@@ -5,7 +5,7 @@ import {
   IconButton,
   Tooltip,
 } from '@mui/material';
-
+import { COLOR_PRIMARY } from '@luispmoraisc/ds-tokens';
 import type { ICardProps } from './types';
 import * as S from './Card.styled';
 
@@ -19,7 +19,11 @@ export default function Card(props: ICardProps) {
 
   return (
     <S.Card {...rest} key={id}>
-      <CardHeader title={props.title} subheader={props.subTitle} />
+      <CardHeader
+        title={props.title}
+        subheader={props.subTitle}
+        sx={{ color: COLOR_PRIMARY }}
+      />
       <CardContent>{props.description}</CardContent>
       <CardActions>
         <Tooltip title="Favorite">

@@ -48,3 +48,5 @@ vitest.config.*.timestamp*
 .npmrc
 generated
 packages/ds-tokens/src/index.ts
+
+storybook-static
