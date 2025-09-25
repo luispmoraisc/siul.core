@@ -5,6 +5,16 @@
   "references": [
     {
       "path": "./packages/ds-tokens"
+    },
+    {
+      "path": "./packages/ds-mui"
     }
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node10",
+      "customConditions": null
+    }
+  }
 }

@@ -1,6 +1,6 @@
 {
-  "name": "@luispmoraisc/ds-tokens",
-  "version": "0.1.0",
+  "name": "@luispmoraisc/ds-mui",
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -11,11 +11,6 @@
       "@luispmoraisc/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "scss": "./dist/generated/scss/tokens.scss",
-      "css": "./dist/generated/css/tokens.css",
-      "colors": "./dist/colors.js",
-      "typography": "./dist/typography.js",
-      "spacing": "./dist/spacing.js",
       "default": "./dist/index.js"
     }
   },
@@ -23,8 +18,14 @@
     "dist",
     "!**/*.tsbuildinfo"
   ],
-  "dependencies": {},
   "devDependencies": {
-    "style-dictionary": "^5.0.4"
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2"
   }
 }
