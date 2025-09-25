@@ -19,6 +19,42 @@
     "xl": {
       "value": "2rem",
       "category": "spacing"
+    },
+    "borderRadius": {
+      "xs": {
+        "value": "2px",
+        "category": "spacing"
+      },
+      "sm": {
+        "value": "4px",
+        "category": "spacing"
+      },
+      "md": {
+        "value": "8px",
+        "category": "spacing"
+      },
+      "lg": {
+        "value": "12px",
+        "category": "spacing"
+      },
+      "xl": {
+        "value": "16px",
+        "category": "spacing"
+      }
+    },
+    "shadow": {
+      "sm": {
+        "value": "0 2px 8px rgba(0, 0, 0, 0.1)",
+        "category": "spacing"
+      },
+      "md": {
+        "value": "0 4px 16px rgba(0, 0, 0, 0.15)",
+        "category": "spacing"
+      },
+      "lg": {
+        "value": "0 8px 24px rgba(0, 0, 0, 0.2)",
+        "category": "spacing"
+      }
     }
   }
 }

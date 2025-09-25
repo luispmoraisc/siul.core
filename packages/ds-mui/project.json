@@ -1,0 +1,12 @@
+{
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/ds-mui && yalc publish --private"
+      },
+      "dependsOn": ["build"],
+      "parallel": false
+    }
+  }
+}
