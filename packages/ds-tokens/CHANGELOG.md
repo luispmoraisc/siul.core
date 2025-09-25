@@ -1,3 +1,9 @@
+## 0.2.0 (2025-09-25)
+
+### 🚀 Features
+
+- **ds-mui:** integrate with storybook ([e31eaf5](https://github.com/luispmoraisc/siul.core/commit/e31eaf5))
+
 ## 0.1.0 (2025-09-23)
 
 ### 🚀 Features

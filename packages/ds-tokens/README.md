@@ -17,10 +17,3 @@ In the `config.json` file, locate the `files` attribute under the `js` platform 
 Next, open the `vite.config.ts` file and add a new input to the `rollup` configuration.
 
 Finally, run the command `nx build ds-tokens` to generate the new tokens.
-
-## TO DO
-
-- Enhance the development experience.
-- Eliminate the need for manual updates to the `vite` and `style dictionary` configurations.
-- Create base tokens and specialized tokens.
-- Implement multi-brand support.
