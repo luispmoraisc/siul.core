@@ -1,0 +1,2 @@
+export declare const Card: import('@emotion/styled').StyledComponent<import('@mui/material').CardOwnProps & import('@mui/material/OverridableComponent').CommonProps & Omit<import('react').DetailedHTMLProps<import('react').HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "className" | "style" | "classes" | "children" | "elevation" | "square" | "sx" | "variant" | "raised"> & import('@mui/system').MUIStyledCommonProps<import('@mui/material').Theme>, {}, {}>;
+//# sourceMappingURL=Card.styled.d.ts.map
