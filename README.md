@@ -4,7 +4,6 @@
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
-[![Version](https://img.shields.io/npm/v/@luispmoraisc/ds-tokens.svg)]()
 
 Siul Core is a comprehensive monorepo that centralizes all shareable frontend code for organizations. Built with reusability, speed, quality, security, and developer experience in mind, this design system ensures consistency across teams while accelerating development workflows.
 
@@ -19,19 +18,19 @@ Siul Core is a comprehensive monorepo that centralizes all shareable frontend co
 
 ## 🛠 Tech Stack
 
-| Technology                                                   | Purpose                 | Version |
-| ------------------------------------------------------------ | ----------------------- | ------- |
-| [NX](https://nx.dev/)                                        | Monorepo Management     | Latest  |
-| [Yarn](https://yarnpkg.com/)                                 | Package Manager         | v3+     |
-| [TypeScript](https://www.typescriptlang.org/)                | Type Safety             | v5+     |
-| [Vite](https://vitejs.dev/) & [Vitest](https://vitest.dev/)  | Build Tool & Testing    | Latest  |
-| [ESLint](https://eslint.org/)                                | Code Linting            | v8+     |
-| [Prettier](https://prettier.io/)                             | Code Formatting         | Latest  |
-| [Husky](https://typicode.github.io/husky/)                   | Git Hooks               | Latest  |
-| [Style Dictionary](https://amzn.github.io/style-dictionary/) | Design Tokens           | v3+     |
-| [Storybook](https://storybook.js.org/)                       | Component Documentation | v7+     |
-| [React](https://reactjs.org/)                                | UI Library              | v18+    |
-| [MUI](https://mui.com/)                                      | Component Foundation    | v5+     |
+| Technology                                                   |
+| ------------------------------------------------------------ |
+| [NX](https://nx.dev/)                                        |
+| [Yarn](https://yarnpkg.com/)                                 |
+| [TypeScript](https://www.typescriptlang.org/)                |
+| [Vite](https://vitejs.dev/) & [Vitest](https://vitest.dev/)  |
+| [ESLint](https://eslint.org/)                                |
+| [Prettier](https://prettier.io/)                             |
+| [Husky](https://typicode.github.io/husky/)                   |
+| [Style Dictionary](https://amzn.github.io/style-dictionary/) |
+| [Storybook](https://storybook.js.org/)                       |
+| [React](https://reactjs.org/)                                |
+| [MUI](https://mui.com/)                                      |
 
 ## 📦 Packages
 
@@ -116,11 +115,11 @@ import { Card } from '@luispmoraisc/ds-mui';
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guidelines](https://github.com/luispmoraisc/siul.core/blob/main/CONTRIBUTING.md) for details.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/luispmoraisc/siul.core/blob/main/LICENSE) file for details.
 
 ---
 

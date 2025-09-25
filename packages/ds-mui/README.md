@@ -1,66 +1,87 @@
-# @luispmoraisc/ds-mui
+# 🧩 @luispmoraisc/ds-mui
 
-## Technologies
+> **Enterprise-ready React components built on MUI with integrated design tokens**
 
-- Built with [React](https://react.dev)
-- Based on [MUI](https://mui.com/)
-- Tested with [Vitest](https://vitest.dev/)
+[![NPM Version](https://img.shields.io/github/package-json/v/luispmoraisc/siul.core?filename=packages%2Fds-mui%2Fpackage.json)](https://github.com/luispmoraisc/siul.core/pkgs/npm/ds-mui)
+[![License](https://img.shields.io/npm/l/@luispmoraisc/ds-tokens.svg)](https://github.com/luispmoraisc/siul.core/blob/main/LICENSE)
 
-## How to contribute
+A comprehensive React component library that extends Material-UI with consistent design tokens and enhanced functionality. Built for enterprise applications that demand reliability, accessibility, and maintainability.
 
-You are welcome to contribute to the Design System. Follow the steps below:
+## ✨ Features
 
-1. Clone the repository from the `main` branch:
+- 🎨 **Design Token Integration** - Automatically synchronized with `@luispmoraisc/ds-tokens`
+- 🧩 **MUI Foundation** - Built on top of the battle-tested Material-UI library
+- 🔧 **TypeScript First** - Full type safety and IntelliSense support
+- ♿ **Accessibility** - WCAG 2.1 AA compliant components
+- 📱 **Responsive** - Mobile-first design approach
+- 🚀 **Tree Shakeable** - Import only what you need
+- 📖 **Well Documented** - Comprehensive Storybook documentation
 
-```sh
-gh repo clone luispmoraisc/siul.core
+## 🛠 Tech Stack
+
+| Technology                               |
+| ---------------------------------------- |
+| [React](https://react.dev)               |
+| [MUI](https://mui.com/)                  |
+| [TypeScript](https://typescriptlang.org) |
+| [Vitest](https://vitest.dev/)            |
+| [Emotion](https://emotion.sh)            |
+
+## 📦 Installation
+
+```bash
+# Using npm
+npm install @luispmoraisc/ds-mui @luispmoraisc/ds-tokens
+
+# Using yarn
+yarn add @luispmoraisc/ds-mui @luispmoraisc/ds-tokens
+
+# Using pnpm
+pnpm add @luispmoraisc/ds-mui @luispmoraisc/ds-tokens
 ```
 
-2. Create a new branch following the `conventional-commit` pattern:
+## 🚀 Quick Start
 
-```sh
-# Replace <type> and <branch_name> as needed
-git checkout -b <type>/<branch_name>
+```typescript
+import React from 'react';
+import { Card } from '@luispmoraisc/ds-mui';
+
+function App() {
+  return (
+    <Card
+      id="1234"
+      title="Hello World!"
+      subTitle="It's a subheader"
+      description="This is a description of the card content that explains what this card is about."
+      onBtnClick={(id) => alert(`ID ${id} was clicked.`)}
+    />
+  );
+}
+
+export default App;
 ```
 
-3. Generate a new component by running the command below:
+## 📚 Documentation
 
-```sh
-nx g @nx/react:component --path=packages/ds-mui/src/<ComponentName>/<ComponentName>
-```
+Explore our design tokens in our interactive documentation:
 
-> Ensure that the `ComponentName` is in CamelCase.
+🔗 **[View Token Gallery](https://luispmoraisc.github.io/siul.core/)**
 
-4. Write unit tests for your changes:
+## 🤝 Contributing
 
-```sh
-nx test @luispmoraisc/ds-mui
-```
+We welcome contributions! Please see our [Contributing Guidelines](https://github.com/luispmoraisc/siul.core/blob/main/CONTRIBUTING.md) for details.
 
-### How to test it locally
+## 📄 License
 
-To test the package locally, follow these steps:
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/luispmoraisc/siul.core/blob/main/LICENSE) file for details.
 
-1. Build and publish the package locally using [yalc](https://github.com/wclr/yalc):
+---
 
-```sh
-npx nx build ds-mui
-```
-
-2. Link the package in your external project:
-
-```sh
-npx yalc add @luispmoraisc/ds-mui
-```
-
-> **Note:** We use `yalc` instead of symbolic links to avoid potential issues with dependency resolution.
-
-## How to publish a new version
-
-To publish a new version, follow these steps:
-
-1. Open a pull request (PR) to the `development` branch;
-2. This will trigger a workflow to generate a new tag `@luispmoraisc/ds-mui@next`;
-3. Add the package to one of your projects and verify that everything works as expected;
-4. Open a PR from `development` to `main`;
-5. This will trigger a workflow to generate a new tag and release the package with the `latest` tag;
+<div align="center">
+  <p>Made with ❤️ by the <a href="https://github.com/luispmoraisc">@luispmoraisc</a></p>
+  <p>
+    <a href="https://luispmoraisc.github.io/siul.core/">📖 Documentation</a> •
+    <a href="https://github.com/luispmoraisc/siul.core/issues">🐛 Report Bug</a> •
+    <a href="https://github.com/luispmoraisc/siul.core/issues">💡 Request Feature</a>
+  </p>
+</div>
