@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "commit": "git cz",
-    "prepare": "npx husky install && npx nx build ds-tokens"
+    "postinstall": "npx nx build ds-tokens"
   },
   "private": true,
   "dependencies": {

@@ -12,8 +12,7 @@ import * as S from './Card.styled';
 export default function Card(props: ICardProps) {
   const { id, title, subTitle, description, onBtnClick, ...rest } = props;
 
-  const handleClick = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  const handleClick = () => {
     onBtnClick(id);
   };
 

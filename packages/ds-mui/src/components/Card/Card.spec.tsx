@@ -19,7 +19,7 @@ describe('Card', () => {
     expect(getByText('Card Description')).toBeInTheDocument();
   });
 
-  it('should call onBtnClick when the button is clicked', async () => {
+  it('should call onBtnClick when the button is clicked', () => {
     const mockOnBtnClick = vi.fn();
     const { getByRole } = render(
       <Card
@@ -33,10 +33,6 @@ describe('Card', () => {
 
     const button = getByRole('button', { name: /favorite/i });
     button.click();
-
-    // Wait for the async operation to complete
-    await new Promise((resolve) => setTimeout(resolve, 1100));
-
     expect(mockOnBtnClick).toHaveBeenCalledWith('card-1');
   });
 });
